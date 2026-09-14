@@ -1,18 +1,20 @@
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useEffect, useState } from "react";
-import { BadgeCheck, Droplets, Flame, PawPrint, Utensils } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, HandCoins, LifeBuoy, PawPrint, Utensils } from "lucide-react";
 import wildlifeImage from "@/assets/cause-wildlife.jpg";
 import foodImage from "@/assets/cause-food.jpg";
 import disasterImage from "@/assets/cause-disaster.jpg";
-import waterImage from "@/assets/cause-water.jpg";
+import povertyImage from "@/assets/cause-poverty.jpg";
+
+import { openSubmitDialog } from "./SubmitCharityModal";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const CAUSES = [
   {
     id: "wildlife",
-    label: "Wildlife rescue",
-    short: "Wildlife",
+    label: "Animal rescue",
+    short: "Animals",
     icon: PawPrint,
     image: wildlifeImage,
     alt: "A wildlife rescue worker carrying a koala through a sanctuary",
@@ -35,9 +37,9 @@ const CAUSES = [
   },
   {
     id: "disaster",
-    label: "Disaster relief",
-    short: "Relief",
-    icon: Flame,
+    label: "Disaster response",
+    short: "Response",
+    icon: LifeBuoy,
     image: disasterImage,
     alt: "Disaster relief volunteers organizing emergency supplies after a flood",
     blurb: "Back first responders with shelter, medicine and supplies in the hours that matter most.",
@@ -46,16 +48,16 @@ const CAUSES = [
     perDollar: 1.1,
   },
   {
-    id: "water",
-    label: "Clean water",
-    short: "Water",
-    icon: Droplets,
-    image: waterImage,
-    alt: "A community gathering around a new clean-water pump",
-    blurb: "Build wells, filters and lasting repairs that keep safe water flowing every day.",
-    charities: ["charity: water", "WaterAid", "Water.org"],
-    unit: "days of water",
-    perDollar: 6.2,
+    id: "poverty",
+    label: "Poverty relief",
+    short: "Poverty",
+    icon: HandCoins,
+    image: povertyImage,
+    alt: "A community worker handing out supplies in a low-income neighbourhood",
+    blurb: "Support families with essentials, shelter and the small grants that break the cycle.",
+    charities: ["CARE", "Mercy Corps", "OXFAM"],
+    unit: "families supported",
+    perDollar: 0.9,
   },
 ] as const;
 
@@ -90,7 +92,7 @@ export function ChooseCause() {
             </h2>
           </div>
           <p className="max-w-sm text-base leading-relaxed text-ink/70 md:text-lg">
-            Dotis only pays verified charities. Pick your cause and every dollar your bandwidth earns lands there.
+            Dotis only pays verified charities. Pick your cause — or submit your local charity for verification.
           </p>
         </motion.div>
       </div>
@@ -221,9 +223,17 @@ export function ChooseCause() {
 
         <div className="mx-auto mt-5 flex max-w-[1880px] flex-col items-start justify-between gap-4 border-t border-ink/15 px-1 pt-5 md:flex-row md:items-center md:gap-6 md:px-0">
           <p className="max-w-3xl text-sm leading-relaxed text-ink/65">
-            Every dollar shown on your Impact Dashboard is donated directly to your chosen charity. We cover infrastructure, security and operating costs separately.
+            Everything shown on your Impact Dashboard is donated directly to your chosen charity, and you can request proof of any donation at any time. We cover infrastructure, security and operating costs separately.
           </p>
-          <p className="hidden shrink-0 font-stamp text-[0.62rem] uppercase tracking-[0.28em] text-flare md:block">Click a card to explore</p>
+          <button
+            type="button"
+            onClick={openSubmitDialog}
+            data-cursor-hover
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-transform duration-300 hover:scale-[1.03]"
+          >
+            Submit your local charity
+            <ArrowUpRight className="h-4 w-4" />
+          </button>
         </div>
       </motion.div>
     </section>
