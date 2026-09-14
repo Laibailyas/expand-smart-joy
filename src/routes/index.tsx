@@ -36,8 +36,11 @@ function Index() {
       <ChooseCause />
       <SecurityControl />
       <SocialProof />
+      <SubmitBand />
       <Faq />
       <FinalCta />
+      <SubmitCharityModal />
+      <Toaster position="top-center" />
     </main>
   );
 }
