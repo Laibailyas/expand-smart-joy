@@ -44,7 +44,7 @@ const STATS = [
   { icon: Wallet, to: 0, prefix: "$", decimals: 0, label: "cost to users", fill: 1 },
 ];
 
-function StatNumber({ to, decimals, prefix = "", suffix = "", play }: { to: number; decimals: number; prefix?: string; suffix?: string; play: boolean }) {
+function StatNumber({ to, decimals, prefix = "", suffix = "", play }: { to: number; decimals: number; prefix?: string | undefined; suffix?: string | undefined; play: boolean }) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
