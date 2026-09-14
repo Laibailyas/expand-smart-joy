@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useEffect } from "react";
-import { Download } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
+import { openSubmitDialog } from "./SubmitCharityModal";
 import collageFinalLeft from "@/assets/collage-final-left.png";
 import collageFinalRight from "@/assets/collage-final-right.png";
 
@@ -84,7 +85,7 @@ export function FinalCta() {
         </motion.span>
 
         <h2 className="mt-4 font-display text-[clamp(1.9rem,8.4vw,5.5rem)] uppercase leading-[0.95] text-paper sm:mt-6">
-          {["Start giving", "without giving"].map((line, li) => (
+          {["Start giving", "without paying"].map((line, li) => (
             <span key={line} className="block overflow-hidden pb-1">
               <motion.span
                 className="block"
@@ -106,7 +107,7 @@ export function FinalCta() {
           transition={{ duration: 0.8, delay: 0.25, ease }}
           className="mx-auto mt-4 max-w-md px-2 text-sm leading-snug text-paper/90 sm:text-base md:text-lg"
         >
-          Free forever, off in one tap, and every dollar lands with a verified charity.
+          Free forever, off in one tap, and every donation reaches a verified charity without you spending one cent.
         </motion.p>
 
         <motion.div
@@ -114,7 +115,7 @@ export function FinalCta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.35, ease }}
-          className="mt-6 flex items-center justify-center"
+          className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
         >
           <a
             href="#causes"
@@ -125,6 +126,15 @@ export function FinalCta() {
             <Download className="rise-label h-4 w-4 sm:h-5 sm:w-5" />
             <span className="rise-label">Install Dotis — it's free</span>
           </a>
+          <button
+            type="button"
+            onClick={openSubmitDialog}
+            data-cursor-hover
+            className="inline-flex items-center gap-2 rounded-full border border-paper/30 px-5 py-3 text-sm font-medium text-paper transition-colors duration-300 hover:bg-paper hover:text-ink sm:px-8 sm:py-3.5 sm:text-base md:text-lg"
+          >
+            Submit your charity
+            <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
+          </button>
         </motion.div>
       </div>
     </section>

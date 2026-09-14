@@ -1,8 +1,9 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
-import { Apple, ArrowDown, Download } from "lucide-react";
+import { Apple, ArrowDown, ArrowUpRight } from "lucide-react";
 import { PartnerMarquee } from "./PartnerMarquee";
 import { InstallSun, SunShape } from "./InstallSun";
+import { openSubmitDialog } from "./SubmitCharityModal";
 import logo from "@/assets/logo.png";
 import collageLeft from "@/assets/collage-left.png";
 import collageRight from "@/assets/collage-right.png";
@@ -99,7 +100,7 @@ export function Hero() {
             Share your small slice of unused internet and generate donations for causes that need it most — at no cost to you.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9, ease }} className="mt-6 sm:mt-9">
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9, ease }} className="mt-6 flex flex-col items-center gap-3 sm:mt-9 sm:flex-row sm:justify-center sm:gap-4">
             <a href="#install" data-cursor-hover className="download-button group inline-flex items-center gap-3 overflow-hidden rounded-full bg-ink py-3.5 pl-7 pr-4 text-base font-medium text-paper sm:gap-4 sm:py-4 sm:pl-9 sm:text-lg">
               <span aria-hidden className="download-fill" />
               <motion.span style={{ x: labelShift }} className="relative z-10">
@@ -112,10 +113,19 @@ export function Hero() {
               >
                 <SunShape className="sun-orbit absolute inset-0 h-full w-full" />
                 <span className="relative grid h-7 w-7 place-items-center overflow-hidden rounded-full">
-                  <Download className="download-icon h-5 w-5 text-paper" />
+                  <img src={logo} alt="" aria-hidden className="download-icon h-5 w-5 object-contain" />
                 </span>
               </motion.span>
             </a>
+            <button
+              type="button"
+              onClick={openSubmitDialog}
+              data-cursor-hover
+              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-7 py-3.5 text-base font-medium text-ink transition-colors duration-300 hover:bg-ink hover:text-paper sm:py-4 sm:text-lg"
+            >
+              Submit your charity
+              <ArrowUpRight className="h-4 w-4" />
+            </button>
           </motion.div>
 
 

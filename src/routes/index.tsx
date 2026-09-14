@@ -8,6 +8,9 @@ import { SecurityControl } from "@/components/SecurityControl";
 import { SocialProof } from "@/components/SocialProof";
 import { Faq } from "@/components/Faq";
 import { FinalCta } from "@/components/FinalCta";
+import { SubmitBand } from "@/components/SubmitBand";
+import { SubmitCharityModal } from "@/components/SubmitCharityModal";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,8 +36,11 @@ function Index() {
       <ChooseCause />
       <SecurityControl />
       <SocialProof />
+      <SubmitBand />
       <Faq />
       <FinalCta />
+      <SubmitCharityModal />
+      <Toaster position="top-center" />
     </main>
   );
 }
