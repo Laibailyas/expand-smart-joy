@@ -1,10 +1,9 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
-import { Apple, ArrowDown, Download } from "lucide-react";
+import { Apple, ArrowDown, ArrowUpRight } from "lucide-react";
 import { PartnerMarquee } from "./PartnerMarquee";
 import { InstallSun, SunShape } from "./InstallSun";
 import { openSubmitDialog } from "./SubmitCharityModal";
-import heroLogo from "@/assets/logo.png";
 import logo from "@/assets/logo.png";
 import collageLeft from "@/assets/collage-left.png";
 import collageRight from "@/assets/collage-right.png";
@@ -114,7 +113,7 @@ export function Hero() {
               >
                 <SunShape className="sun-orbit absolute inset-0 h-full w-full" />
                 <span className="relative grid h-7 w-7 place-items-center overflow-hidden rounded-full">
-                  <img src={heroLogo} alt="" aria-hidden className="download-icon h-5 w-5 object-contain" />
+                  <img src={logo} alt="" aria-hidden className="download-icon h-5 w-5 object-contain" />
                 </span>
               </motion.span>
             </a>
